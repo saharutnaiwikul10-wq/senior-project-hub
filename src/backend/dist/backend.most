@@ -1,0 +1,276 @@
+// Version: 4.0.0
+type AccessControlState__201339279 =
+  {
+    var adminAssigned : Bool;
+    userRoles : Map__230067015<Principal, UserRole__91647283>
+  };
+type AppRole__688856519 = {#admin; #advisor; #committee; #student};
+type CommentId__821569710 = Nat;
+type CommentTarget__805057386 =
+  {#milestone : MilestoneId__189280684; #project : ProjectId__478417951};
+type Comment__343059881 =
+  {
+    author : Principal;
+    body : Text;
+    createdAt : Timestamp__301639476;
+    id : CommentId__821569710;
+    target : CommentTarget__805057386
+  };
+type CriterionScore__219760430 =
+  {criterion : Text; maxScore : Nat; score : Nat; weight : Nat};
+type Data__44217153<K, V> = {var count : Nat__227979830; kvs : [var ?(K, V)]};
+type EvaluationId__287760747 = Nat;
+type Evaluation__24624900 =
+  {
+    averageScore : Nat;
+    comment : Text;
+    createdAt : Timestamp__301639476;
+    criteria : [CriterionScore__219760430];
+    evaluator : Principal;
+    id : EvaluationId__287760747;
+    projectId : ProjectId__478417951;
+    totalScore : Nat
+  };
+type ExternalBlob__220559234 = Blob;
+type FileId__283657257 = Nat;
+type Internal__283199666<K, V> =
+  {children : [var ?Node__204828119<K, V>]; data : Data__44217153<K, V>};
+type Leaf__598469445<K, V> = {data : Data__44217153<K, V>};
+type Map__230067015<K, V> = Map__405889023<K, V>;
+type Map__405889023<K, V> = Map__603270868<K, V>;
+type Map__603270868<K, V> =
+  {var root : Node__204828119<K, V>; var size : Nat__227979830};
+type MilestoneId__189280684 = Nat;
+type MilestoneStatus__721523425 = {#done; #inProgress; #notStarted};
+type Milestone__73534988 =
+  {
+    createdAt : Timestamp__301639476;
+    dueDate : Timestamp__301639476;
+    id : MilestoneId__189280684;
+    name : Text;
+    projectId : ProjectId__478417951;
+    status : MilestoneStatus__721523425;
+    weight : Nat
+  };
+type Nat__227979830 = Nat__920180692;
+type Nat__920180692 = Nat;
+type NewActor__793188255 =
+  {
+    accessControlState : AccessControlState__201339279;
+    comments :
+      Map__230067015<Nat,
+                      {
+                        author : Principal;
+                        body : Text;
+                        createdAt : Int;
+                        id : Nat;
+                        target : {#milestone : Nat; #project : Nat}
+                      }>;
+    counters :
+      {
+        var nextCommentId : Nat;
+        var nextEvaluationId : Nat;
+        var nextFileId : Nat;
+        var nextMilestoneId : Nat;
+        var nextProjectId : Nat;
+        var nextSubTaskId : Nat
+      };
+    evaluations :
+      Map__230067015<Nat,
+                      {
+                        averageScore : Nat;
+                        comment : Text;
+                        createdAt : Int;
+                        criteria :
+                          [{
+                             criterion : Text;
+                             maxScore : Nat;
+                             score : Nat;
+                             weight : Nat
+                           }];
+                        evaluator : Principal;
+                        id : Nat;
+                        projectId : Nat;
+                        totalScore : Nat
+                      }>;
+    files :
+      Map__230067015<Nat,
+                      {
+                        blob : Blob;
+                        category : Text;
+                        id : Nat;
+                        mimeType : Text;
+                        name : Text;
+                        projectId : Nat;
+                        uploadedAt : Int;
+                        uploadedBy : Principal;
+                        version : Text
+                      }>;
+    milestones :
+      Map__230067015<Nat,
+                      {
+                        createdAt : Int;
+                        dueDate : Int;
+                        id : Nat;
+                        name : Text;
+                        projectId : Nat;
+                        status : {#done; #inProgress; #notStarted};
+                        weight : Nat
+                      }>;
+    profiles :
+      Map__230067015<Principal,
+                      {
+                        createdAt : Int;
+                        department : Text;
+                        displayName : Text;
+                        email : ?Text;
+                        principal : Principal;
+                        role : {#admin; #advisor; #committee; #student}
+                      }>;
+    projects :
+      Map__230067015<Nat,
+                      {
+                        abstract : Text;
+                        academicYear : Text;
+                        advisor : Principal;
+                        category : Text;
+                        createdAt : Int;
+                        id : Nat;
+                        keywords : [Text];
+                        members :
+                          [{name : Text; principal : Principal; role : Text}];
+                        owner : Principal;
+                        status :
+                          {
+                            #draft;
+                            #failed;
+                            #inProgress;
+                            #passed;
+                            #pending;
+                            #submitted
+                          };
+                        title : Text;
+                        updatedAt : Int
+                      }>;
+    subTasks :
+      Map__230067015<Nat,
+                      {
+                        assignee : Principal;
+                        done : Bool;
+                        dueDate : Int;
+                        id : Nat;
+                        milestoneId : Nat;
+                        title : Text
+                      }>
+  };
+type Node__204828119<K, V> =
+  {#internal : Internal__283199666<K, V>; #leaf : Leaf__598469445<K, V>};
+type OldActor__904324871 = {};
+type ProjectFile__258981935 =
+  {
+    blob : ExternalBlob__220559234;
+    category : Text;
+    id : FileId__283657257;
+    mimeType : Text;
+    name : Text;
+    projectId : ProjectId__478417951;
+    uploadedAt : Timestamp__301639476;
+    uploadedBy : Principal;
+    version : Text
+  };
+type ProjectId__478417951 = Nat;
+type ProjectMember__517278152 =
+  {name : Text; principal : Principal; role : Text};
+type ProjectStatus__111682793 =
+  {#draft; #failed; #inProgress; #passed; #pending; #submitted};
+type Project__614212307 =
+  {
+    abstract : Text;
+    academicYear : Text;
+    advisor : Principal;
+    category : Text;
+    createdAt : Timestamp__301639476;
+    id : ProjectId__478417951;
+    keywords : [Text];
+    members : [ProjectMember__517278152];
+    owner : Principal;
+    status : ProjectStatus__111682793;
+    title : Text;
+    updatedAt : Timestamp__301639476
+  };
+type SubTaskId__774147945 = Nat;
+type SubTask__832699598 =
+  {
+    assignee : Principal;
+    done : Bool;
+    dueDate : Timestamp__301639476;
+    id : SubTaskId__774147945;
+    milestoneId : MilestoneId__189280684;
+    title : Text
+  };
+type Timestamp__301639476 = Int;
+type UserProfile__190304746 =
+  {
+    createdAt : Timestamp__301639476;
+    department : Text;
+    displayName : Text;
+    email : ?Text;
+    principal : Principal;
+    role : AppRole__688856519
+  };
+type UserRole__91647283 = {#admin; #guest; #user};
+{
+  "20261004_000000" : OldActor__904324871 -> NewActor__793188255
+}
+actor  {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__230067015<Principal, UserRole__91647283>
+    };
+  stable comments :
+    {
+      var root : Node__204828119<CommentId__821569710, Comment__343059881>;
+      var size : Nat__227979830
+    };
+  stable counters :
+    {
+      var nextCommentId : Nat;
+      var nextEvaluationId : Nat;
+      var nextFileId : Nat;
+      var nextMilestoneId : Nat;
+      var nextProjectId : Nat;
+      var nextSubTaskId : Nat
+    };
+  stable evaluations :
+    {
+      var root :
+        Node__204828119<EvaluationId__287760747, Evaluation__24624900>;
+      var size : Nat__227979830
+    };
+  stable files :
+    {
+      var root : Node__204828119<FileId__283657257, ProjectFile__258981935>;
+      var size : Nat__227979830
+    };
+  stable milestones :
+    {
+      var root : Node__204828119<MilestoneId__189280684, Milestone__73534988>;
+      var size : Nat__227979830
+    };
+  stable profiles :
+    {
+      var root : Node__204828119<Principal, UserProfile__190304746>;
+      var size : Nat__227979830
+    };
+  stable projects :
+    {
+      var root : Node__204828119<ProjectId__478417951, Project__614212307>;
+      var size : Nat__227979830
+    };
+  stable subTasks :
+    {
+      var root : Node__204828119<SubTaskId__774147945, SubTask__832699598>;
+      var size : Nat__227979830
+    }
+};

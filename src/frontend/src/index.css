@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Bundled Latin display + mono (skill fonts) ---- */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 300 700;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 100 800;
+}
+
+@layer base {
+  :root {
+    /* Thai-first body stack (OS Thai fonts), Latin display/mono bundled */
+    --font-display: "Space Grotesk", "Noto Sans Thai", "IBM Plex Sans Thai",
+      "Sarabun", "Leelawadee UI", system-ui, sans-serif;
+    --font-body: "Noto Sans Thai", "IBM Plex Sans Thai", "Sarabun",
+      "Leelawadee UI", "Space Grotesk", system-ui, -apple-system, sans-serif;
+    --font-mono: "JetBrains Mono", "Noto Sans Thai", ui-monospace, monospace;
+
+    --radius: 0.5rem;
+
+    /* Light — "ครุฑาสาร" academic registry: warm paper, ink navy, brass seal */
+    --background: 0.985 0.004 95;
+    --foreground: 0.22 0.03 260;
+    --card: 1 0 0;
+    --card-foreground: 0.22 0.03 260;
+    --popover: 1 0 0;
+    --popover-foreground: 0.22 0.03 260;
+
+    --primary: 0.42 0.13 258;
+    --primary-foreground: 0.985 0.004 258;
+
+    --secondary: 0.955 0.008 250;
+    --secondary-foreground: 0.3 0.03 258;
+    --muted: 0.955 0.008 250;
+    --muted-foreground: 0.5 0.02 255;
+
+    --accent: 0.72 0.14 78;
+    --accent-foreground: 0.24 0.04 78;
+
+    --destructive: 0.53 0.2 27;
+    --destructive-foreground: 0.985 0.004 27;
+
+    /* Status semantics — draft / pending / in-progress / submitted / passed / failed */
+    --success: 0.55 0.14 152;
+    --success-foreground: 0.985 0.004 152;
+    --warning: 0.72 0.15 78;
+    --warning-foreground: 0.24 0.04 78;
+    --info: 0.55 0.13 240;
+    --info-foreground: 0.985 0.004 240;
+    --draft: 0.62 0.02 255;
+    --draft-foreground: 0.985 0.004 255;
+    --progress: 0.6 0.14 220;
+    --progress-foreground: 0.985 0.004 220;
+
+    --border: 0.9 0.008 255;
+    --input: 0.9 0.008 255;
+    --ring: 0.42 0.13 258;
+
+    --chart-1: 0.42 0.13 258;
+    --chart-2: 0.6 0.14 220;
+    --chart-3: 0.72 0.14 78;
+    --chart-4: 0.55 0.14 152;
+    --chart-5: 0.53 0.2 27;
+
+    --sidebar: 0.975 0.006 255;
+    --sidebar-foreground: 0.22 0.03 260;
+    --sidebar-primary: 0.42 0.13 258;
+    --sidebar-primary-foreground: 0.985 0.004 258;
+    --sidebar-accent: 0.94 0.01 250;
+    --sidebar-accent-foreground: 0.3 0.03 258;
+    --sidebar-border: 0.9 0.008 255;
+    --sidebar-ring: 0.42 0.13 258;
+
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.46 0.14 262),
+      oklch(0.38 0.12 252)
+    );
+    --gradient-subtle: linear-gradient(
+      180deg,
+      oklch(0.99 0.004 95),
+      oklch(0.965 0.008 250)
+    );
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    /* Dark — deep ink navy, brass accent preserved */
+    --background: 0.17 0.02 258;
+    --foreground: 0.94 0.008 250;
+    --card: 0.205 0.022 258;
+    --card-foreground: 0.94 0.008 250;
+    --popover: 0.23 0.024 258;
+    --popover-foreground: 0.94 0.008 250;
+
+    --primary: 0.68 0.13 258;
+    --primary-foreground: 0.16 0.02 258;
+
+    --secondary: 0.25 0.024 258;
+    --secondary-foreground: 0.86 0.008 250;
+    --muted: 0.25 0.024 258;
+    --muted-foreground: 0.62 0.012 255;
+
+    --accent: 0.78 0.14 80;
+    --accent-foreground: 0.18 0.03 80;
+
+    --destructive: 0.62 0.18 27;
+    --destructive-foreground: 0.16 0.02 27;
+
+    --success: 0.68 0.14 152;
+    --success-foreground: 0.16 0.02 152;
+    --warning: 0.78 0.14 80;
+    --warning-foreground: 0.18 0.03 80;
+    --info: 0.68 0.13 240;
+    --info-foreground: 0.16 0.02 240;
+    --draft: 0.58 0.02 255;
+    --draft-foreground: 0.16 0.02 255;
+    --progress: 0.7 0.13 220;
+    --progress-foreground: 0.16 0.02 220;
+
+    --border: 0.3 0.022 258;
+    --input: 0.3 0.022 258;
+    --ring: 0.68 0.13 258;
+
+    --chart-1: 0.68 0.13 258;
+    --chart-2: 0.7 0.13 220;
+    --chart-3: 0.78 0.14 80;
+    --chart-4: 0.68 0.14 152;
+    --chart-5: 0.62 0.18 27;
+
+    --sidebar: 0.19 0.022 258;
+    --sidebar-foreground: 0.94 0.008 250;
+    --sidebar-primary: 0.68 0.13 258;
+    --sidebar-primary-foreground: 0.16 0.02 258;
+    --sidebar-accent: 0.25 0.024 258;
+    --sidebar-accent-foreground: 0.86 0.008 250;
+    --sidebar-border: 0.3 0.022 258;
+    --sidebar-ring: 0.68 0.13 258;
+
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.5 0.14 262),
+      oklch(0.4 0.12 252)
+    );
+    --gradient-subtle: linear-gradient(
+      180deg,
+      oklch(0.19 0.022 258),
+      oklch(0.17 0.02 258)
+    );
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+  .bg-gradient-subtle {
+    background-image: var(--gradient-subtle);
+  }
+  .text-gradient-primary {
+    background-image: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}

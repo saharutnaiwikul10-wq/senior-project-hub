@@ -1,0 +1,165 @@
+{
+  "version": 1,
+  "skills": {
+    "connector-googlecalendar": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "e46c2162d2807e19652fe2804b3fdee5097cb24320a75eb56808f32b6106a914"
+    },
+    "connector-googledrive": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "66b32d6f169115ac286db4fb6f4f490d73db18471bf7672ef6a9f22b34d08da7"
+    },
+    "connector-googlemail": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "7cc135908bd64965b55cb93f6962f7e1dd1c0e42beb4bfa9823974c776c00502"
+    },
+    "connector-quickbooks": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "b523b0d27d69776bb6c54f208b49a8c74e78f9d7694f08df96283708df1bacf2"
+    },
+    "connector-slack": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "91989197b28a6900e4c62a09fa7101b5089194d56fe680fabc70811c23a6b4cd"
+    },
+    "connector-spotify": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "f5101f67a12b8a5b42a7efc41af39b7569b14e297ff2955b93a4964d2be33fd3"
+    },
+    "connector-tmdb": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "5e7bd8292c83272bcab98d2f809c84544c39b9a3105a58d42cc85d5c45189521"
+    },
+    "connector-twilio": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "f66ab619cc13f86cd8e66ac007df1257494abc75189f2ef18c5e1157e718c414"
+    },
+    "connector-weatherapi": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "67d0380d44c13def757abfff9de29aac9ec62a6296eec5980f9449af89b4cc9a"
+    },
+    "connector-x": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "f7df8b2214c27701fb4f70449822a5e8188ccbe39d47f1b7f25323971e911dec"
+    },
+    "extension-authorization": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "27aadb0325a3c29c98e63e7f5444c03317ddeb9667e6cfd912f57b8f75a61ff3"
+    },
+    "extension-camera": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "2bab7f8931257e22ad493442b4156bd6fee4ab54c444cf0a4aa82cbd6b0d1d99"
+    },
+    "extension-core-infrastructure": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "2ddce3420de052ff6ca88982a3a9b7ae440653ffb94840d897d944393a33c700"
+    },
+    "extension-email": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "d3ba97806b9621f845aef9833996e8191ae71354d873196485438b19ee02cdbc"
+    },
+    "extension-email-calendar-events": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "b794fdd5f31e5e7d00a1c15c5fc0911bd81a5d107ea736e64e482e5e5701a59c"
+    },
+    "extension-email-marketing": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "1fc117d5d3cd5d8386988ebeadf684ba59f829290c8d18fb18325b07323f3b7c"
+    },
+    "extension-email-raw": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "0b5ca45fe92a29f0d6efa4c6caf0693295a0fe06daf02076be62b9f19fe8b588"
+    },
+    "extension-email-verification": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "211c71ab254485afd6f8f86000c3ad95c81d745d11572fe2da0abe4a169ea9a2"
+    },
+    "extension-http-outcalls": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "7535d9e0264f16ff76e4ec7e588a627e8d6960e2a61007c4b6c477ca794333bb"
+    },
+    "extension-inference": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "fdd105e448a600e9a24d5758ab6a70aa0710213fd25f8d17b0ac0a3c315fec17"
+    },
+    "extension-invite-links": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "260bf3fccb26cedebc6c982c707cfd4ab8601b7596b1bff6c04d4907bc01501d"
+    },
+    "extension-object-storage": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "ee60f2a44d504428ebc1224f0ac48870406d0ddb408aed66d47a23a20505cb71"
+    },
+    "extension-openai": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "bd38d2cc4fa6f51d9f599ed48682a933b324a155d8e33f6948889afaeab95674"
+    },
+    "extension-oql": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "c859e4fe1d8acc77c81a05d53ea89153a87fe5787eef113efada638eb57898bf"
+    },
+    "extension-posting-to-x": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "f1955c31086d98e8d30f0216ee7a5f0f292cf0c2979656001d99f765e568f9f5"
+    },
+    "extension-qr-code": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "e793896e040e4e1fea9be05d23ef47d5e170d6f153802f8c99fb3f2bc4b3e5b9"
+    },
+    "extension-querying-oql": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "ac240ec64321c25505f55bbdbf6c4a07b6230655dd47f16a01f7dfd2f4c24a80"
+    },
+    "extension-stripe": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "c7c330bc87520c8fff6fd8394c91f574e4c7f03f1b042bea1dcfd6f2a9e15244"
+    },
+    "extension-user-approval": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "0d8c6f3c5d8c04c91738de51361c755e93a821f13df5dfcf1bc9291442d5b709"
+    },
+    "migrating-motoko-actors": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "c1abc405db6d1d8e38e7fdc26c230a61e50ee2136d1101606a9ce64e13195a3b"
+    },
+    "troubleshooting-motoko-migrations": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "fca587b7558aa730afbefcbbe183fa93b16a40c4e4c033976e2904ebdee72aa1"
+    },
+    "writing-motoko": {
+      "source": "caffeinelabs/skills",
+      "sourceType": "github",
+      "computedHash": "b9ed1384b612517fce2d5f4e6e397d1556353e86194edc91f8742ee4eefa3b33"
+    }
+  }
+}

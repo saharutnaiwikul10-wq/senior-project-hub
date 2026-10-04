@@ -1,0 +1,398 @@
+type _ImmutableObjectStorageRefillResult = 
+ record {
+   success: opt bool;
+   topped_up_amount: opt nat;
+ };
+type _ImmutableObjectStorageRefillInformation = record {
+                                                  proposed_top_up_amount:
+                                                   opt nat;};
+type _ImmutableObjectStorageCreateCertificateResult = 
+ record {
+   blob_hash: text;
+   method: text;
+ };
+type Value = 
+ variant {
+   "bool": bool;
+   float: float64;
+   "int": int;
+   "nat": nat;
+   "null";
+   "text": text;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type UserProfileView = 
+ record {
+   createdAt: Timestamp;
+   department: text;
+   displayName: text;
+   email: opt text;
+   "principal": principal;
+   role: AppRole;
+ };
+type Timestamp = int;
+type SubTaskInput = 
+ record {
+   assignee: principal;
+   dueDate: Timestamp;
+   milestoneId: MilestoneId;
+   title: text;
+ };
+type SubTaskId = nat;
+type SubTask = 
+ record {
+   assignee: principal;
+   done: bool;
+   dueDate: Timestamp;
+   id: SubTaskId;
+   milestoneId: MilestoneId;
+   title: text;
+ };
+type StudentDashboard = 
+ record {
+   progress: vec ProgressSummary;
+   projects: vec Project;
+   scores: vec ScoreSummary;
+   upcoming: vec DeadlineEntry;
+ };
+type ScoreSummary = 
+ record {
+   averageScore: nat;
+   averageTotal: nat;
+   evaluationCount: nat;
+   projectId: ProjectId;
+ };
+type Result__1 = 
+ variant {
+   err: Error;
+   ok;
+ };
+type Result = 
+ record {
+   hasMore: bool;
+   rows: vec vec Cell;
+ };
+type ProjectUpdate = 
+ record {
+   abstract: text;
+   academicYear: text;
+   advisor: principal;
+   category: text;
+   keywords: vec text;
+   members: vec ProjectMember;
+   title: text;
+ };
+type ProjectStatus = 
+ variant {
+   draft;
+   failed;
+   inProgress;
+   passed;
+   pending;
+   submitted;
+ };
+type ProjectMember = 
+ record {
+   name: text;
+   "principal": principal;
+   role: text;
+ };
+type ProjectInput = 
+ record {
+   abstract: text;
+   academicYear: text;
+   advisor: principal;
+   category: text;
+   keywords: vec text;
+   members: vec ProjectMember;
+   title: text;
+ };
+type ProjectId = nat;
+type ProjectFilter = 
+ record {
+   academicYear: opt text;
+   category: opt text;
+   search: opt text;
+   status: opt ProjectStatus;
+ };
+type ProjectFile = 
+ record {
+   "blob": ExternalBlob;
+   category: text;
+   id: FileId;
+   mimeType: text;
+   name: text;
+   projectId: ProjectId;
+   uploadedAt: Timestamp;
+   uploadedBy: principal;
+   version: text;
+ };
+type Project = 
+ record {
+   abstract: text;
+   academicYear: text;
+   advisor: principal;
+   category: text;
+   createdAt: Timestamp;
+   id: ProjectId;
+   keywords: vec text;
+   members: vec ProjectMember;
+   owner: principal;
+   status: ProjectStatus;
+   title: text;
+   updatedAt: Timestamp;
+ };
+type ProgressSummary = 
+ record {
+   doneMilestones: nat;
+   doneSubTasks: nat;
+   percent: nat;
+   projectId: ProjectId;
+   totalMilestones: nat;
+   totalSubTasks: nat;
+ };
+type MilestoneStatus = 
+ variant {
+   done;
+   inProgress;
+   notStarted;
+ };
+type MilestoneInput = 
+ record {
+   dueDate: Timestamp;
+   name: text;
+   projectId: ProjectId;
+   weight: nat;
+ };
+type MilestoneId = nat;
+type Milestone = 
+ record {
+   createdAt: Timestamp;
+   dueDate: Timestamp;
+   id: MilestoneId;
+   name: text;
+   projectId: ProjectId;
+   status: MilestoneStatus;
+   weight: nat;
+ };
+type FileInput = 
+ record {
+   "blob": ExternalBlob;
+   category: text;
+   mimeType: text;
+   name: text;
+   projectId: ProjectId;
+   version: text;
+ };
+type FileId = nat;
+type ExternalBlob = blob;
+type EvaluationInput = 
+ record {
+   comment: text;
+   criteria: vec CriterionScore;
+   projectId: ProjectId;
+ };
+type EvaluationId = nat;
+type Evaluation = 
+ record {
+   averageScore: nat;
+   comment: text;
+   createdAt: Timestamp;
+   criteria: vec CriterionScore;
+   evaluator: principal;
+   id: EvaluationId;
+   projectId: ProjectId;
+   totalScore: nat;
+ };
+type Error = 
+ variant {
+   AmbiguousAttribute: record {
+                         field: text;
+                         sources: vec text;
+                       };
+   FrontendOriginMismatch: record {
+                             expected: vec text;
+                             got: text;
+                           };
+   FrontendOriginsNotConfigured;
+   MalformedCandid;
+   MissingField: text;
+   MixedSsoSources: record {
+                      otherKeys: vec text;
+                      ssoKeys: vec text;
+                    };
+   NoAttributes;
+   Stale: record {ageNs: nat;};
+   UnknownNonce;
+   UntrustedSsoSource: record {domain: text;};
+ };
+type DeadlineEntry = 
+ record {
+   dueDate: Timestamp;
+   milestoneId: MilestoneId;
+   milestoneName: text;
+   overdue: bool;
+   projectId: ProjectId;
+   projectTitle: text;
+   status: MilestoneStatus;
+ };
+type CriterionScore = 
+ record {
+   criterion: text;
+   maxScore: nat;
+   score: nat;
+   weight: nat;
+ };
+type CountByLabel = 
+ record {
+   count: nat;
+   name: text;
+ };
+type CommentTarget = 
+ variant {
+   milestone: MilestoneId;
+   project: ProjectId;
+ };
+type CommentInput = 
+ record {
+   body: text;
+   target: CommentTarget;
+ };
+type CommentId = nat;
+type Comment = 
+ record {
+   author: principal;
+   body: text;
+   createdAt: Timestamp;
+   id: CommentId;
+   target: CommentTarget;
+ };
+type Cell = 
+ record {
+   name: text;
+   value: Value;
+ };
+type AppRole = 
+ variant {
+   admin;
+   advisor;
+   committee;
+   student;
+ };
+type AdvisorDashboard = 
+ record {
+   evaluated: vec Project;
+   supervised: vec Project;
+   toEvaluate: vec Project;
+ };
+type AdminStats = 
+ record {
+   byCategory: vec CountByLabel;
+   byStatus: vec CountByLabel;
+   totalProjects: nat;
+   totalUsers: nat;
+ };
+service : {
+  _immutableObjectStorageBlobsAreLive: (hashes: vec blob) -> (vec bool) query;
+  _immutableObjectStorageBlobsToDelete: () -> (vec blob) query;
+  _immutableObjectStorageConfirmBlobDeletion: (blobs: vec blob) -> ();
+  _immutableObjectStorageCreateCertificate: (blobHash: text) ->
+   (_ImmutableObjectStorageCreateCertificateResult);
+  _immutableObjectStorageRefillCashier: (refillInformation:
+   opt _ImmutableObjectStorageRefillInformation) ->
+   (_ImmutableObjectStorageRefillResult);
+  _immutableObjectStorageUpdateGatewayPrincipals: () -> ();
+  _initialize_access_control: () -> ();
+  _internet_identity_sign_in_finish: () -> (Result__1);
+  _internet_identity_sign_in_start: () -> (blob);
+  /// Adds a comment to a project or milestone. Advisor, committee, or admin.
+  addComment: (input: CommentInput) -> (Comment);
+  /// Registers an uploaded file's metadata against a project. The caller must
+  /// own the project, be its advisor, or be an admin.
+  addProjectFile: (input: FileInput) -> (ProjectFile);
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  /// Creates a milestone under a project. Project owner, advisor, or admin.
+  createMilestone: (input: MilestoneInput) -> (Milestone);
+  /// Creates a new project owned by the caller (student).
+  createProject: (input: ProjectInput) -> (Project);
+  /// Adds a sub-task under a milestone.
+  createSubTask: (input: SubTaskInput) -> (SubTask);
+  /// Deletes a milestone and its sub-tasks.
+  deleteMilestone: (milestoneId: MilestoneId) -> ();
+  /// Deletes a project. Owner or admin only.
+  deleteProject: (projectId: ProjectId) -> ();
+  /// Deletes a file the caller uploaded. Uploader or admin only.
+  deleteProjectFile: (fileId: FileId) -> ();
+  /// Deletes a sub-task.
+  deleteSubTask: (subTaskId: SubTaskId) -> ();
+  execute: (qJson: text) -> (Result) query;
+  /// Overall statistics for admins.
+  getAdminStats: () -> (AdminStats) query;
+  /// Dashboard payload for the calling advisor / committee member.
+  getAdvisorDashboard: () -> (AdvisorDashboard) query;
+  /// Returns the backend's public API documentation as Markdown.
+  getApiDoc: () -> (text) query;
+  /// Returns the caller's own profile, or null if not yet created.
+  getCallerUserProfile: () -> (opt UserProfileView) query;
+  getCallerUserRole: () -> (UserRole) query;
+  /// Returns a single project by id.
+  getProject: (projectId: ProjectId) -> (opt Project) query;
+  /// Computes the percentage progress of a project.
+  getProjectProgress: (projectId: ProjectId) -> (ProgressSummary) query;
+  /// Returns the aggregate score summary for a project.
+  getScoreSummary: (projectId: ProjectId) -> (ScoreSummary) query;
+  /// Dashboard payload for the calling student.
+  getStudentDashboard: () -> (StudentDashboard) query;
+  /// Upcoming and overdue deadlines across the projects the caller owns or supervises.
+  getUpcomingDeadlines: () -> (vec DeadlineEntry) query;
+  /// Returns another user's profile. Admins may read any profile; other
+  /// callers may read only their own.
+  getUserProfile: (user: principal) -> (opt UserProfileView) query;
+  isCallerAdmin: () -> (bool) query;
+  /// Lists evaluations of a project.
+  listEvaluations: (projectId: ProjectId) -> (vec Evaluation) query;
+  /// Lists comments for a milestone.
+  listMilestoneComments: (milestoneId: MilestoneId) -> (vec Comment) query;
+  /// Lists milestones of a project.
+  listMilestones: (projectId: ProjectId) -> (vec Milestone) query;
+  /// Lists projects owned by the caller.
+  listMyProjects: () -> (vec Project) query;
+  /// Lists comments for a project.
+  listProjectComments: (projectId: ProjectId) -> (vec Comment) query;
+  /// Lists all files of a project.
+  listProjectFiles: (projectId: ProjectId) -> (vec ProjectFile) query;
+  /// Lists projects matching an optional filter.
+  listProjects: (filter: ProjectFilter) -> (vec Project) query;
+  /// Lists sub-tasks of a milestone.
+  listSubTasks: (milestoneId: MilestoneId) -> (vec SubTask) query;
+  /// Lists all user profiles. Admin only.
+  listUserProfiles: () -> (vec UserProfileView) query;
+  /// Creates or updates the caller's own profile. The first caller to save a
+  /// profile is registered with the authorization extension; the role defaults
+  /// to #student and can later be changed by an admin.
+  saveCallerUserProfile: (displayName: text, department: text) ->
+   (UserProfileView);
+  schema: () -> (text) query;
+  /// Sets a milestone's progress status.
+  setMilestoneStatus: (milestoneId: MilestoneId, status: MilestoneStatus) ->
+   (Milestone);
+  /// Changes a project's lifecycle status. Owner, advisor, or admin.
+  setProjectStatus: (projectId: ProjectId, status: ProjectStatus) ->
+   (Project);
+  /// Toggles a sub-task's done flag.
+  setSubTaskDone: (subTaskId: SubTaskId, done: bool) -> (SubTask);
+  /// Sets the application role of a user. Admin only.
+  setUserRole: (user: principal, role: AppRole) -> ();
+  /// Submits an evaluation for a project. Advisor, committee, or admin.
+  submitEvaluation: (input: EvaluationInput) -> (Evaluation);
+  /// Updates a milestone's name, due date, or weight.
+  updateMilestone: (milestoneId: MilestoneId, name: text, dueDate: Timestamp,
+   weight: nat) -> (Milestone);
+  /// Updates a project's editable details. Owner or admin only.
+  updateProject: (projectId: ProjectId, input: ProjectUpdate) -> (Project);
+}
